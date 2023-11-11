@@ -34,3 +34,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+async function getProductBySlug(slug: string) {
+   console.log("🚀 ~ file: page.tsx:5 ~ getProductBySlug ~ slug:", slug)
+   const res = await fetch(`${process.env.API}/product/${slug}`, {
+      method: "GET",
+      next: { revalidate: 1 }
+   })
+   const data = await res.json()
+   if (!res.ok) {
+      throw new Error("Something went wrong!")
+   }
+   return data
+}
+ const { slug } = params
+   const product = await getProductBySlug(slug)
+   console.log("🚀 ~ file: page.tsx:19 ~ ProductViewPage ~ product:", product)
+   return (
+      <div className="container my-4">
+         <div className="row">
+            <div className="col-lg-8 offset-lg-2">
+               <h1 className="text-center">
+                  Product view page
+               </h1>
+            </div>
+         </div>
+      </div>
+   )

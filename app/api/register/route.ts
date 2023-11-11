@@ -7,6 +7,7 @@ export async function POST(req: Request) {
    await dbConnect();
    const body = await req.json();
    const { name, email, password } = body;
+   console.log("🚀 ~ file: route.ts:10 ~ POST ~ name:", name)
 
    try {
       await new User({

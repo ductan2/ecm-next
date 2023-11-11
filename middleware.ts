@@ -7,7 +7,6 @@ export const config = { matcher: ["/dashboard/:path*", "/api/user/:path*", "/api
 export default withAuth(
    async function middleware(req) {
       const url = req.nextUrl.pathname;
-      console.log("🚀 ~ file: middleware.ts:10 ~ middleware ~ url:", url)
       const userRole = (req.nextauth.token?.user as UserType).role;
       if (url.includes("/admin") && userRole !== "admin")
          return NextResponse.redirect(new URL('/', req.url));

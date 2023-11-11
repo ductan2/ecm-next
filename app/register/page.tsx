@@ -14,7 +14,7 @@ const Register = () => {
       e.preventDefault();
       try {
          setLoading(true);
-         const response = await fetch(`${process.env.API}/api/register`, {
+         const response = await fetch(`${process.env.API}/register`, {
             method: "POST",
             headers: {
                "Content-Type": "application/json"

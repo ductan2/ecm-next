@@ -22,7 +22,6 @@ const Login = () => {
             toast.error(result.error)
             setLoading(false);
          }else {
-            console.log(result)
             toast.success("Login successfully")
             router.push(callBackUrl)
          }
